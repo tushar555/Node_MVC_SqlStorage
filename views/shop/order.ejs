@@ -4,7 +4,19 @@
 
 <body>
     <%- include('../includes/nav.ejs') %>
-    <h3>Your Orders</h3>
+    <% if(orders.length<=0){%>
+    <h3>No Orders</h3>
+    <%}else{%>
+    <% orders.forEach((order)=>{ %>
+    <h3># <%= order.id %></h3>
+    <ul>
+        <% order.products.forEach((pro)=>{%>
+        <li><%= pro.title %>(<%= pro.orderItem.quantity %>)</li>
+        <%})%>
+    </ul>
+    <% })%>
+    <%}%>
+  
 </body>
 
 </html>

@@ -7,17 +7,23 @@
     <ul>
         <% cart.forEach((pro)=>{ %>
         <li>
-            <h2><%= pro.productData.title %></h2>
+            <h4><%= pro.title %></h4>
+            <label>Quantity: <%= pro.cartItem.quantity %></label>
         </li>
-        <li>
-            <h2><%= pro.qty %></h2>
-        </li>
+
         <form action="/delete-cart-item" method="POST">
-            <input type="hidden" name="id" value="<%= pro.productData.id %>">
+            <input type="hidden" name="id" value="<%= pro.id %>">
             <button type="submit" class="btn">Delete</button>
         </form>
+        <hr>
         <%});%>
     </ul>
+
+    <div style="text-align: center;">
+        <form action="/order-checkout" method="POST">
+            <button class="btn" type="submit"> Order Now!</button>
+        </form>
+    </div>
 </body>
 
 </html>
